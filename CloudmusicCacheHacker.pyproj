@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{bae9b351-88f1-49e7-bb52-59cbc031578c}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>CloudmusicCacheHacker.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="launcher.bat" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CloudmusicCacheHacker.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\backports\makefile.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\backports\__init__.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\abnf_regexp.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\api.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\builder.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\compat.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\exceptions.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\iri.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\misc.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\normalizers.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\parseresult.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\uri.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\validators.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\_mixin.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\__init__.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\six.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\ssl_match_hostname\_implementation.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\ssl_match_hostname\__init__.py" />
+    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="env\" />
+    <Folder Include="env\Lib\" />
+    <Folder Include="env\Lib\site-packages\" />
+    <Folder Include="env\Lib\site-packages\pip\" />
+    <Folder Include="env\Lib\site-packages\pip\_vendor\" />
+    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\" />
+    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages" />
+    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\backports" />
+    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986" />
+    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\ssl_match_hostname" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.7</Version>
+      <Description>env (Python 3.7)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
