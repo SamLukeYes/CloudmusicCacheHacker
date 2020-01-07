@@ -38,7 +38,10 @@ def decode(filename):
     try:
         thread_print(f'正在查找ID为{id}的歌曲信息...')
         url = urlopen(f'https://api.imjad.cn/cloudmusic/?type=detail&id={id}')
-        data = eval(url.read())
+        raw_data = url.read()
+        if not raw_data[0] == '{' and raw_data[-1] == '}':
+            raise TypeError
+        data = eval(raw_data)
         name = data['songs'][0]['name']
         artist = data['songs'][0]['ar'][0]['name']
         for i in range(len(name)):
@@ -79,7 +82,7 @@ def run_thread(filename):
     return t
 
 print('''网易云音乐缓存转换器
-V0.1a1
+V0.1a2
 
 免责声明：本程序仅以学习交流为用途，切勿用于商业目的。若因使用本程序造成任何版权纠纷，后果自负。
 ''')

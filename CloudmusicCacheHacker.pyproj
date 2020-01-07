@@ -20,6 +20,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="launcher.bat" />
+    <Content Include="README.txt" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
