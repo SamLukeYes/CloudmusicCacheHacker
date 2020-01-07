@@ -5,7 +5,8 @@ V0.1a2
 
 运行指南：
 1、在运行本程序之前，需要安装python 3.6+和easygui
-请先安装好python（在Windows下需配置好环境变量），然后用命令行在本程序目录下执行
+请先安装好python（在Windows下需手动进行环境变量等项目的配置，具体方法此处不再赘述）
+然后用命令行在本程序目录下执行
 pip3 install -r requirements.txt
 或者直接执行
 pip3 install easygui
