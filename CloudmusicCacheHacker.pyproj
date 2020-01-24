@@ -12,6 +12,7 @@
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <IsWindowsApplication>True</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -25,37 +26,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloudmusicCacheHacker.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\backports\makefile.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\backports\__init__.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\abnf_regexp.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\api.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\builder.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\compat.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\exceptions.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\iri.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\misc.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\normalizers.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\parseresult.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\uri.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\validators.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\_mixin.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986\__init__.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\six.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\ssl_match_hostname\_implementation.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\ssl_match_hostname\__init__.py" />
-    <Compile Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\__init__.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="env\" />
-    <Folder Include="env\Lib\" />
-    <Folder Include="env\Lib\site-packages\" />
-    <Folder Include="env\Lib\site-packages\pip\" />
-    <Folder Include="env\Lib\site-packages\pip\_vendor\" />
-    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\" />
-    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages" />
-    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\backports" />
-    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\rfc3986" />
-    <Folder Include="env\Lib\site-packages\pip\_vendor\urllib3\packages\ssl_match_hostname" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
