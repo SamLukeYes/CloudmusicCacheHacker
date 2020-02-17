@@ -3,8 +3,7 @@ V0.1a2
 
 免责声明：本程序仅以学习交流为用途，切勿用于商业目的。若因使用本程序造成任何版权纠纷，后果自负。
 
-下载本程序时只需下载CloudmusicCacheHacker.py，Windows用户可额外下载launcher.py
-env文件夹是本程序开发者使用的虚拟环境，在其他电脑上应该无法使用
+下载本程序时只需下载CloudmusicCacheHacker.py，Windows用户可额外下载launcher.bat
 
 运行指南：
 1、在运行本程序之前，需要安装python 3.6+
