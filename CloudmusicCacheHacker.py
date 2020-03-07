@@ -1,25 +1,35 @@
 import os, sys
 from time import sleep
-from easygui import *
+from easygui import msgbox, diropenbox
+#from progressbar import ProgressBar
 from urllib.request import urlopen
-from threading import Thread, RLock
+#from threading import Thread, RLock
 
 null = None
 true = True
 false = False
-print_lock = RLock()
-exception_lock = RLock()
-name_lock = RLock()
+#print_lock = RLock()
+#exception_lock = RLock()
+#name_lock = RLock()
 oops = []
 invalid = r'/\:*"<>|?'
+finished = 0
+bar_value = 0
+bar_len = 50
+percentage = 0
 
-def thread_print(*args):
-    print_lock.acquire()
-    print(*args)
-    print_lock.release()
+# def thread_print(*args):
+#     print_lock.acquire()
+#     print(*args)
+#     print_lock.release()
+
+def print_bar(string):
+    print(string, end=f'{" "*(bar_len+7-len(string))}\n') #由于存在中文字符，这样仍然不够完美
+    #print(string, end=f'{" "*bar_len}\n')
+    print(f'|{">"*bar_value}{"="*(bar_len-bar_value)}| {percentage*100:.1f}%', end='\r')
 
 def name_mp3(name):
-    name_lock.acquire() #记得调用这个函数后要释放锁！
+    #name_lock.acquire() #记得调用这个函数后要释放锁！
     count = 0
     file_name = f'{name}.mp3'
     while os.path.isfile(f'{output_dir}/{file_name}'):
@@ -36,7 +46,7 @@ def decode(filename):
     #if not id:
     #    return
     try:
-        thread_print(f'正在查找ID为{id}的歌曲信息...')
+        print_bar(f'正在查找ID为{id}的歌曲信息...')
         url = urlopen(f'https://api.imjad.cn/cloudmusic/?type=detail&id={id}')
         raw_data = url.read()
         if not raw_data[0] == '{' and raw_data[-1] == '}':
@@ -59,7 +69,8 @@ def decode(filename):
             output_file = name_mp3(f'{artist} - {name}')
     except:
         output_file = name_mp3(id)
-        thread_print(f'找不到ID为{id}的音乐信息，将使用其ID命名...')
+        print_bar(f'找不到ID为{id}的音乐信息，将使用其ID命名...')
+    print_bar('正在转码...')
     try:
         with open(f'{input_dir}/{filename}', 'rb') as f:
             btay = bytearray(f.read())
@@ -67,22 +78,23 @@ def decode(filename):
             for i,j in enumerate(btay):
                 btay[i] = j ^ 0xa3
             f.write(bytes(btay))
-        name_lock.release()
-        thread_print(f'成功转码MP3文件：{output_file}')
+        #name_lock.release()
+        print_bar(f'成功转码MP3文件：{output_file}')
     except:
-        exception_lock.acquire()
-        exceptionbox(f'ID为{id}的缓存转码失败！', '错误')
-        exception_lock.release()
-        oops.append(id)
+        #exception_lock.acquire()
+        #exceptionbox(f'ID为{id}的缓存转码失败！', '错误')
+        #exception_lock.release()
+        print_bar(f'ID为{id}的缓存转码失败！')
+        return id
     #thread_print(list(threads))
 
-def run_thread(filename):
-    t = Thread(target=decode, args=[filename])
-    t.run()
-    return t
+# def run_thread(filename):
+#     t = Thread(target=decode, args=[filename])
+#     t.run()
+#     return t
 
 print('''网易云音乐缓存转换器
-V0.1a2
+V0.1a3
 
 免责声明：本程序仅以学习交流为用途，切勿用于商业目的。若因使用本程序造成任何版权纠纷，后果自负。
 ''')
@@ -100,25 +112,36 @@ target_files = []
 for i in os.listdir(input_dir):
     if i[-4:] == '.uc!':
         target_files.append(i)
-print(f'找到{len(target_files)}个目标文件。')
+total = len(target_files)
+print(f'找到{total}个目标文件。')
 
 sleep(1)
-'''
-threads = []
+
+# threads = []
+
+# for i in target_files:
+#     threads.append(Thread(target=decode, args=[i]))
+#     #print(f'正在准备转码：{i}')
+#     threads[-1].run()
+
+#bar = ProgressBar().start()
+
+# threads = map(run_thread, target_files)
+# for i in threads:
+#     if i.is_alive():
+#         i.join()
 
 for i in target_files:
-    threads.append(Thread(target=decode, args=[i]))
-    #print(f'正在准备转码：{i}')
-    threads[-1].run()
-'''
-threads = map(run_thread, target_files)
-for i in threads:
-    if i.is_alive():
-        i.join()
+    return_code = decode(i)
+    if return_code:
+        oops.append(return_code)
+    finished += 1
+    percentage = finished / total
+    bar_value = round(percentage*bar_len)
 
-#for i in target_files:
-#    decode(i)
-
+    #bar.update(int(finished/total)*100)
+#bar.finish()
+print(' '*(bar_len+7))
 if oops:
     print('以下ID的缓存转码失败：')
     for i in oops:

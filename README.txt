@@ -1,5 +1,5 @@
 网易云音乐缓存转换器
-V0.1a2
+V0.1a3
 
 免责声明：本程序仅以学习交流为用途，切勿用于商业目的。若因使用本程序造成任何版权纠纷，后果自负。
 
@@ -8,19 +8,23 @@ V0.1a2
 运行指南：
 1、在运行本程序之前，需要安装python 3.6+
 然后用命令行执行
-pip3 install easygui
+pip install easygui
 2、运行本程序时，非Windows用户请用命令行在本程序目录下执行命令
-python3 CloudmusicCacheHacker.py
+python CloudmusicCacheHacker.py
 对于Windows用户，也可直接双击launcher.bat来运行
 注意launcher.bat要与CloudmusicCacheHacker.py在同一目录下
 3、运行程序后，请在弹出的窗口中选择网易云音乐缓存文件夹的位置，程序将自动把缓存转换为MP3格式
 本程序暂不支持移动端，手机用户可先将网易云缓存转移到电脑，再使用本程序进行转换
 音乐缓存目录通常在netease/cloudmusic/Cache/Music1，缓存文件扩展名为.uc!
+4、本程序需要从 https://api.imjad.cn/cloudmusic/ 获取歌曲ID
 为了使程序能够正确获取歌曲信息，请在运行程序时保证网络畅通
 
-已知问题：虽然采用了多线程的算法，但实际运行起来就像单线程一样
-
 更新日志：
+
+2020.3.7    V0.1a3
+1、不再使用无效的多线程算法
+2、中途出错时不再弹出错误信息，改为打印错误提示然后继续进行
+3、加入了进度条显示
 
 2020.1.7	V0.1a2
 修复了一个有关网络安全性的漏洞
